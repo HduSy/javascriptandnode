@@ -3,8 +3,8 @@ const fs = require('fs')
 //创建路由容器
 const router = express.Router()
 
-const Student = require('../api/student')
-
+// const Student = require('../api/student_fs')
+const Student = require('../api/student_db')
 router.get('/', (req, res) => {
     res.send('index Page')
 })
@@ -34,22 +34,52 @@ router.get('/students/new', (req, res) => {
  * 保存新增学生信息
  */
 router.post('/students/new', (req, res) => {
-    Student.save(req.body, (err) => {
+    new Student(req.body).save((err) => {
         // 读取/写入文件失败回调
         if (err) {
             return res.status(500).send('新增学生信息失败')
         }
         res.redirect('/students')
     })
+    // Student.save(req.body, (err) => {
+    //     // 读取/写入文件失败回调
+    //     if (err) {
+    //         return res.status(500).send('新增学生信息失败')
+    //     }
+    //     res.redirect('/students')
+    // })
 })
 router.get('/students/edit', (req, res) => {
-
+    Student.findById(req.query.id.replace(/"/g, ''), (err, student) => {
+        if (err) {
+            res.status(500).send('Server Error')
+        }
+        res.render('edit.html', {
+            student: student
+        })
+    })
 })
 router.post('/students/edit', (req, res) => {
-
+    Student.findByIdAndUpdate(req.body.id.replace(/"/g, ''), req.body, err => {
+        if (err) {
+            res.status(500).send('Server Error')
+        }
+        res.redirect('/students')
+    })
+    // Student.update(req.body, err => {
+    //     if (err) {
+    //         res.status(500).send('Server Error')
+    //     }
+    //     res.redirect('/students')
+    // })
 })
 router.get('/students/delete', (req, res) => {
-
+    Student.findOneAndDelete(req.query.id.replace(/"/g, ''), err => {
+        if (err) {
+            res.status(500).send('Server Error')
+        }
+        res.redirect('/students')
+    })
 })
 //导出单个成员
 module.exports = router

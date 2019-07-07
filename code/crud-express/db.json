@@ -1,1 +1,1 @@
-{"students":[{"id":1,"name":"张三","age":23,"gender":0},{"id":2,"name":"李四","age":23,"gender":1},{"id":3,"name":"张三","age":23,"gender":0},{"id":4,"name":"张三","age":23,"gender":1},{"id":5,"name":"张三","age":23,"gender":0},{"name":"宋垚","age":"23","gender":"0","id":6},{"name":"童","age":"23","gender":"1","id":7}]}
+{"students":[{"id":1,"name":"张三","age":23,"gender":0},{"name":"李四","age":"24","gender":"0","id":2},{"name":"旺旺","age":"22","gender":"0","id":3}]}

@@ -1,5 +1,4 @@
 const express = require('express')
-const fs = require('fs')
 const bodyParser = require('body-parser')
 const app = express()
 //引入
@@ -8,6 +7,7 @@ const router = require('./routers/student')
 const port = 3000
 //配置模板引擎
 app.engine('html', require('express-art-template'))
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 // parse application/json
