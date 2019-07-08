@@ -4,7 +4,7 @@ const fs = require('fs')
 const router = express.Router()
 
 // const Student = require('../api/student_fs')
-const Student = require('../api/student_db')
+const Student = require('../models/student')
 router.get('/', (req, res) => {
     res.send('index Page')
 })

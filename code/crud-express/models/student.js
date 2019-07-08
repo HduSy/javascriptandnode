@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useFindAndModify: false})
-
 
 module.exports = mongoose.model('Student', {
     name: {
